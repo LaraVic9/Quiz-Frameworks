@@ -1,0 +1,6 @@
+factory: Criar instancias de perguntas. Exc: classe "Question" e subclasse de dificuldade (facil, moderada e dificil)
+
+ strategy: usado para embaralhar as perguntas, (talvez "shuffleSTrategy"?)
+
+singleton: criar um objeto que mantem o total de pontos.
+

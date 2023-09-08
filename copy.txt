@@ -1,0 +1,38 @@
+# classe Model
+import json
+
+class Pergunta:
+    def __init__(self, id, pergunta, nivel, dica ):
+        self.id = id
+        self.pergunta = pergunta 
+        self.nivel = nivel
+        self.dica = dica
+    def __repr__(self) -> str:
+        return f"<Pergunta> id: {self.id} - ${self.pergunta} - ${self.nivel} - ${self.dica}"
+
+class Respostas:
+    def __init__(self, respostas):
+        self.respostas = respostas 
+    def __repr__(self) -> str:
+        return f"<Respostas> {self.respostas}"
+
+class LoadData:
+    """ classe Utilitaria carregar o JSON 
+    le dados do arquivo json e retorna um dicionario """
+    
+    @staticmethod
+    def getJson(filename):
+        with open(filename, "r") as f:
+            return json.load(f)
+    
+if __name__ == "__main__":
+    # data representa dicionario
+    data = LoadData().getJson("quiz.json")
+    perguntas = data['perguntas']
+    for q in perguntas:
+        pergunta = Pergunta(q['id'],q['pergunta'],q['nivel'],q['dica'])
+        if pergunta.id == "1":
+            print(pergunta)
+            respostas = Respostas(q['respostas'])
+            print(respostas)
+    
